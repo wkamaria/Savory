@@ -1,5 +1,0 @@
-class Recipe < ApplicationRecord
-  belongs_to :userhas_many :ingredients, dependent: :destroy
-  validates :title, presence: true
-  validates :category, presence: true
-end
