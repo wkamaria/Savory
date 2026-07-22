@@ -1,0 +1,10 @@
+<div class="ingredient-row" style="border: 1px solid #ccc; padding: 8px; margin-bottom: 8px;">
+  <%= ingredient_form.label :ingredient_name, "Ingredient" %>
+  <%= ingredient_form.text_field :ingredient_name %>
+
+  <%= ingredient_form.label :quantity %>
+  <%= ingredient_form.text_field :quantity %>
+
+  <%= ingredient_form.hidden_field :_destroy %>
+  <button data-action="nested-form#remove">Remove</button>
+</div>

@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Recipes" %>
+
+<h1>Recipes</h1>
+
+<%= form_with url: recipes_path, method: :get do |form| %>
+  <%= form.text_field :search, placeholder: "Search by title...", value: params[:search] %>
+  <%= form.select :category, ["Breakfast", "Lunch", "Dinner", "Dessert", "Drinks"], { include_blank: "All categories" }, { onchange: "this.form.requestSubmit()" } %>
+  <%= form.submit "Search" %>
+  <%= link_to "Clear", recipes_path %>
+<% end %>
+
+<div class="recipe-grid">
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe, class: "recipe-tile" do %>
+      <% if recipe.photo.attached? %>
+        <%= image_tag recipe.photo, class: "recipe-tile-photo" %>
+      <% else %>
+        <div class="recipe-tile-photo recipe-tile-placeholder">🍽️</div>
+      <% end %>
+      <div class="recipe-tile-body">
+        <h3><%= recipe.title %></h3>
+        <span class="recipe-tile-category"><%= recipe.category %></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New recipe", new_recipe_path %>

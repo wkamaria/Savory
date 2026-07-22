@@ -1,0 +1,41 @@
+<div id="<%= dom_id recipe %>">
+  <% if recipe.photo.attached? %>
+    <%= image_tag recipe.photo, class: "recipe-photo" %>
+  <% end %>
+  <div>
+    <strong>Title:</strong>
+    <%= recipe.title %>
+  </div>
+  <div>
+    <strong>Description:</strong>
+    <%= recipe.description %>
+  </div>
+  <div>
+    <strong>Cooking time:</strong>
+    <%= recipe.cooking_time %> minutes
+  </div>
+  <div>
+    <strong>Servings:</strong>
+    <%= recipe.servings %>
+  </div>
+  <div>
+    <strong>Category:</strong>
+    <%= recipe.category %>
+  </div>
+  <div>
+    <strong>Ingredients:</strong>
+    <ul>
+      <% recipe.ingredients.each do |ingredient| %>
+        <li><%= ingredient.quantity %> <%= ingredient.ingredient_name %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <strong>Instructions:</strong>
+    <%= recipe.instructions %>
+  </div>
+  <div>
+    <strong>By:</strong>
+    <%= recipe.user.name %>
+  </div>
+</div>
